@@ -1,26 +1,41 @@
 {
-  "name": "x",
+  "name": "google-affix",
   "private": true,
+  "description": "Google Affix - Add Prefix and Suffix to Google Search",
+  "version": "0.0.1",
+  "author": "M Maaz <devmaaaaz@gmail.com>",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,scss,css}\""
   },
   "dependencies": {
-    "next": "12.0.7",
+    "next": "12.0.8-canary.14",
+    "next-themes": "^0.0.15",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "sharp": "^0.29.3"
   },
   "devDependencies": {
     "@types/node": "17.0.7",
     "@types/react": "17.0.38",
     "autoprefixer": "^10.4.1",
     "eslint": "8.6.0",
-    "eslint-config-next": "12.0.7",
+    "eslint-config-next": "12.0.8-canary.14",
     "postcss": "^8.4.5",
+    "prettier": "^2.5.1",
     "sass": "^1.45.2",
     "tailwindcss": "^3.0.8",
     "typescript": "4.5.4"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "useTabs": false,
+    "trailingComma": "none"
   }
 }
