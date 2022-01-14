@@ -1,14 +1,24 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { CrossIcon, SearchIcon } from '@/components/Icons'
 
-const SearchBar: FC<any> = ({ suffixTags, prefixTags }) => {
+const SearchBar: FC<any> = ({ suffixTags, prefixTags, doseMatch }) => {
   const [touched, setTouched] = useState(false)
   const [query, setQuery] = useState('')
+
+  useEffect(() => {
+    if (doseMatch) setQuery('rated')
+  }, [doseMatch])
 
   const handleSearch = (e: any) => {
     e.preventDefault()
 
-    if (!query || query.trim().length === 0) return null
+    if (
+      !query &&
+      query.trim().length === 0 &&
+      prefixTags.length === 0 &&
+      suffixTags.length === 0
+    )
+      return null
 
     const encodedParams = encodeURIComponent(
       `${prefixTags

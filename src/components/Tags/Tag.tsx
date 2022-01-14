@@ -1,9 +1,14 @@
 import { nanoid } from 'nanoid'
 import { useState } from 'react'
 
+interface Tags {
+  id: string
+  tag: string
+}
+
 interface ITag {
   title: string
-  tags: any[]
+  tags: Tags[]
   setTags: any
 }
 
@@ -29,32 +34,41 @@ const Tag = ({ title, tags = [], setTags }: ITag) => {
   }
 
   return (
-    <div className="min-w-[200px] md:min-w-[280px] w-full max-w-xs flex flex-col items-start rounded overflow-hidden">
-      <p className="w-full py-1 text-center border rounded-sm border-input-border px-7">
-        {title}
-      </p>
+    <div className="min-w-[200px] md:min-w-[280px] w-full border-2 border-input-border max-w-xs flex flex-col items-start justify-between rounded overflow-hidden">
+      <div className="relative flex items-center justify-center w-full h-8 py-1 text-center border-b rounded-sm border-input-border px-7">
+        <p className="select-none">{title}</p>
+        {tags.length > 0 && (
+          <div className="absolute right-2 top-2/4 -translate-y-2/4">
+            <Delete title="Delete All Tags" onClick={() => setTags([])} />
+          </div>
+        )}
+      </div>
 
-      {tags.length > 0 && (
-        <ul className="flex flex-wrap gap-1 px-4 py-2">
+      {tags.length > 0 ? (
+        <ul className="flex flex-wrap h-full gap-1 px-4 mt-6">
           {tags.map((val: any) => {
             const { tag, id } = val
             return (
               <li
-                onClick={() => removeTag(id)}
                 key={id}
-                title={`Click to delete ${tag}`}
-                className="px-3 text-sm bg-green-500 rounded-md cursor-pointer"
+                title={tag}
+                className="relative flex items-center text-white justify-between h-6 max-w-[18rem] pl-3 pr-8 overflow-hidden text-sm truncate transition-colors duration-150 ease-in-out bg-green-500 rounded-full group hover:bg-green-600"
               >
-                {tag}
+                <span>{tag}</span>
+                <div className="absolute right-0 top-2/4 -translate-y-2/4 ">
+                  <Delete onClick={() => removeTag(id)} />
+                </div>
               </li>
             )
           })}
         </ul>
+      ) : (
+        <div className="h-full min-h-[3rem]" />
       )}
 
-      <div className="w-full py-4">
+      <div className="w-full mt-6">
         <form
-          className="flex items-stretch justify-between overflow-hidden border border-gray-500 rounded-md"
+          className="flex items-stretch justify-between overflow-hidden border-input-border border-y"
           onSubmit={(e) => handleNewTag(e)}
         >
           <input
@@ -86,3 +100,26 @@ const Tag = ({ title, tags = [], setTags }: ITag) => {
 }
 
 export default Tag
+
+const Delete = ({ onClick, ...adds }: any) => {
+  return (
+    <button
+      className="flex items-center justify-center w-6 h-6 text-white bg-green-600 rounded-full group-hover:bg-green-400 hover:bg-green-400"
+      onClick={onClick}
+      {...adds}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2}
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="w-4 h-4"
+      >
+        <path d="M18 6 6 18M6 6l12 12" />
+      </svg>
+    </button>
+  )
+}
