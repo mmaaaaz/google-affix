@@ -34,13 +34,13 @@ const Home: NextPage = () => {
     if (prefixTags.length === 0) {
       setPrefixTags(initialPrefixTags)
     }
-  }, [])
+  }, [prefixTags.length, setPrefixTags])
 
   useEffect(() => {
     if (suffixTags.length === 0) {
       setSuffixTags(initialSuffixTags)
     }
-  }, [])
+  }, [suffixTags.length, setSuffixTags])
 
   const doseMatch = useMemo(() => {
     const dooooes =
