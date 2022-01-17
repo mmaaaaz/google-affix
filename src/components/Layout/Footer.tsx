@@ -11,18 +11,16 @@ const Footer = () => {
         </p>
       </div>
 
-      <div className="flex items-center justify-between w-full px-5 py-3 md:px-8 ">
-        <h1 className="">
-          Search Google with persistent prefix and suffix tags
-        </h1>
-        <h2 className="h-full overflow-x-auto text-center whitespace-normal">
+      <div className="flex flex-col items-start justify-between px-5 py-3 mx-auto space-x-3 w-max sm:w-full sm:flex-row md:px-8 ">
+        <h1>Search Google with persistent prefix and suffix tags</h1>
+        <h2>
           Inspiration
           <a
-            className="mx-1 font-medium text-green-500 whitespace-pre rounded-md"
+            className="mx-1 font-medium text-green-500 rounded-md"
             href="https://www.tagglesearch.app/"
             rel="noopener noreferrer"
           >
-            Taggle Search
+            Taggle&nbsp;Search
           </a>
           by
           <a
