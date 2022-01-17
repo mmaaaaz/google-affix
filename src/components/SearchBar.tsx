@@ -1,14 +1,14 @@
 import { FC, useEffect, useState } from 'react'
 import { BackIcon, CrossIcon, SearchIcon } from '@/components/Icons'
 
-const SearchBar: FC<any> = ({ suffixTags, prefixTags, doseMatch }) => {
+const SearchBar: FC<any> = ({ suffixTags, prefixTags, defaultQuery }) => {
   const [touched, setTouched] = useState(false)
   const [overlay, setOverlay] = useState(false)
   const [query, setQuery] = useState('')
 
   useEffect(() => {
-    if (doseMatch) setQuery('rated')
-  }, [doseMatch])
+    if (defaultQuery) setQuery(defaultQuery)
+  }, [defaultQuery])
 
   const handleSearch = (e: any) => {
     e.preventDefault()
@@ -36,9 +36,9 @@ const SearchBar: FC<any> = ({ suffixTags, prefixTags, doseMatch }) => {
     <>
       <form
         onSubmit={(e) => handleSearch(e)}
-        className={`lg:max-w-[584px] max-w-[430px] mt-5 md:mt-6 w-full dark:hover:bg-primary-2 dark:bg-primary-2 md:bg-transparent dark:focus:bg-primary-2 dark:hover:border-transparent border bg-transparent border-input-border hover:shadow-md rounded-full overflow-hidden h-10 md:h-11 my-0 mx-auto relative ${
+        className={`lg:max-w-[584px] max-w-[430px] mt-5 md:mt-7 w-full dark:hover:bg-primary-2 dark:md:bg-transparent dark:bg-primary-2 md:bg-transparent dark:focus:bg-primary-2 dark:hover:border-transparent border bg-transparent border-input-border hover:shadow-md rounded-full overflow-hidden h-10 md:h-11 my-0 mx-auto relative ${
           touched
-            ? 'dark:bg-primary-2 dark:border-transparent shadow-lg'
+            ? 'dark:bg-primary-2 dark:border-transparent shadow-lg hover:shadow-lg'
             : 'border-input-border'
         }`}
       >
@@ -62,7 +62,6 @@ const SearchBar: FC<any> = ({ suffixTags, prefixTags, doseMatch }) => {
           spellCheck="false"
           onBlur={() => {
             setTouched(false)
-            setOverlay(false)
           }}
           onFocus={() => {
             setTouched(true)
@@ -78,7 +77,7 @@ const SearchBar: FC<any> = ({ suffixTags, prefixTags, doseMatch }) => {
         )}
       </form>
 
-      <div className="flex mt-6 flex-wrap items-center justify-center max-w-[360px] mx-auto gap-2 sm:gap-5">
+      <div className="flex mt-6 md:mt-7 flex-wrap items-center justify-center max-w-[360px] mx-auto gap-2 md:gap-3">
         <button onClick={(e) => handleSearch(e)} className="triggers">
           Google Search
         </button>
@@ -113,7 +112,7 @@ const Overlay = ({ query, setQuery, setOverlay, handleSearch }: any) => {
       >
         <BackIcon
           onClick={() => setOverlay(false)}
-          className="absolute w-6 h-6 dark:text-blue-300 text-[#1A73E8] md:w-5 md:h-5 top-2/4 -translate-y-2/4 left-2 md:left-4"
+          className="absolute w-6 h-6 cursor-pointer dark:text-blue-300 text-[#1A73E8] md:w-5 md:h-5 top-2/4 -translate-y-2/4 left-2 md:left-4"
         />
 
         <input

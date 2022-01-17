@@ -63,7 +63,11 @@ const Tag = ({ title, tags = [], setTags }: ITag) => {
           })}
         </ul>
       ) : (
-        <div className="h-full min-h-[3rem]" />
+        <div className="h-full select-none min-h-[3rem] flex items-center justify-center w-full px-4">
+          <p className="text-sm text-center text-gray-400">
+            Add some {title} <br /> by clicking on the input below
+          </p>
+        </div>
       )}
 
       <div className="w-full mt-6">

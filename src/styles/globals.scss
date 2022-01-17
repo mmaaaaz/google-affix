@@ -36,7 +36,7 @@
 
 @layer components {
   .triggers {
-    @apply px-4 py-2 mx-auto w-max text-sm text-center whitespace-pre border border-transparent rounded shadow-sm hover:border-input-border bg-primary-2;
+    @apply px-4 py-2 mx-auto select-none w-max text-sm text-center whitespace-pre border border-transparent rounded shadow-sm hover:border-input-border bg-primary-2;
   }
 }
 

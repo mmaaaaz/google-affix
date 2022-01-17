@@ -3,7 +3,7 @@ import { Footer, Header } from '@/components/Layout'
 import { useLocalStorage } from '@/hooks'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useEffect, useMemo } from 'react'
+import { useEffect, useState } from 'react'
 
 const initialPrefixTags = [
   {
@@ -14,12 +14,17 @@ const initialPrefixTags = [
 
 const initialSuffixTags = [
   {
-    tag: 'video on youtube',
+    tag: 'videos on',
     id: 'initial-2'
+  },
+  {
+    tag: 'youtube',
+    id: 'initial-3'
   }
 ]
 
 const Home: NextPage = () => {
+  const [defaultQuery, setDefaultQuery] = useState<string>('')
   const [prefixTags, setPrefixTags] = useLocalStorage(
     'prefix-tags',
     initialPrefixTags
@@ -30,24 +35,12 @@ const Home: NextPage = () => {
   )
 
   useEffect(() => {
-    if (prefixTags.length === 0) {
-      setPrefixTags(initialPrefixTags)
-    }
-  }, [prefixTags.length, setPrefixTags])
-
-  useEffect(() => {
-    if (suffixTags.length === 0) {
+    if (prefixTags.length === 0 && suffixTags.length === 0) {
       setSuffixTags(initialSuffixTags)
+      setPrefixTags(initialPrefixTags)
+      setDefaultQuery('rated')
     }
-  }, [suffixTags.length, setSuffixTags])
-
-  const doseMatch = useMemo(() => {
-    const dooooes =
-      JSON.stringify(suffixTags) === JSON.stringify(initialSuffixTags) &&
-      JSON.stringify(prefixTags) === JSON.stringify(initialPrefixTags)
-
-    return dooooes
-  }, [suffixTags, prefixTags])
+  }, [])
 
   return (
     <>
@@ -68,7 +61,7 @@ const Home: NextPage = () => {
         <Hero />
 
         <SearchBar
-          doseMatch={doseMatch}
+          defaultQuery={defaultQuery}
           suffixTags={suffixTags}
           prefixTags={prefixTags}
         />
