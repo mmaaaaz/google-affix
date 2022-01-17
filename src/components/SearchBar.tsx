@@ -60,6 +60,7 @@ const SearchBar: FC<any> = ({ suffixTags, prefixTags, defaultQuery }) => {
           autoCorrect="off"
           autoFocus
           spellCheck="false"
+          onClick={() => setOverlay(true)}
           onBlur={() => {
             setTouched(false)
           }}
