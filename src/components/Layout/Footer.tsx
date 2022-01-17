@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="flex flex-col w-full text-xs text-gray-700 sm:text-sm bg-primary-3 dark:text-white">
+    <footer className="flex flex-col w-full text-xs text-gray-500 sm:text-sm bg-primary-3 dark:text-gray-300">
       <h1 className="flex items-center justify-center w-full h-full px-4 py-3 text-center border-b border-input-border/30">
         Search Google with persistent prefix and suffix tags
       </h1>

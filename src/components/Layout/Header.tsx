@@ -4,7 +4,7 @@ import { BuyMeACoffe, GithubIcon } from '../Icons'
 
 const Header = () => {
   return (
-    <header className="flex items-center justify-end w-full p-4 text-sm divide-x divide-secondary-3">
+    <header className="flex items-center justify-end w-full p-2 text-sm divide-x md:p-4 divide-secondary-3">
       <div className="pr-6">
         <ThemeSwitcher />
       </div>

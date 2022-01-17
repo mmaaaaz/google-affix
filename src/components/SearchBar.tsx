@@ -1,8 +1,9 @@
 import { FC, useEffect, useState } from 'react'
-import { CrossIcon, SearchIcon } from '@/components/Icons'
+import { BackIcon, CrossIcon, SearchIcon } from '@/components/Icons'
 
 const SearchBar: FC<any> = ({ suffixTags, prefixTags, doseMatch }) => {
   const [touched, setTouched] = useState(false)
+  const [overlay, setOverlay] = useState(false)
   const [query, setQuery] = useState('')
 
   useEffect(() => {
@@ -35,13 +36,13 @@ const SearchBar: FC<any> = ({ suffixTags, prefixTags, doseMatch }) => {
     <>
       <form
         onSubmit={(e) => handleSearch(e)}
-        className={`lg:max-w-[584px] max-w-[430px] mt-3 md:mt-6 w-full dark:hover:bg-primary-2 dark:focus:bg-primary-2 dark:hover:border-transparent border hover:shadow-md rounded-full overflow-hidden h-9 md:h-11 my-0 mx-auto relative ${
+        className={`lg:max-w-[584px] max-w-[430px] mt-5 md:mt-6 w-full dark:hover:bg-primary-2 dark:bg-primary-2 md:bg-transparent dark:focus:bg-primary-2 dark:hover:border-transparent border bg-transparent border-input-border hover:shadow-md rounded-full overflow-hidden h-10 md:h-11 my-0 mx-auto relative ${
           touched
             ? 'dark:bg-primary-2 dark:border-transparent shadow-lg'
             : 'border-input-border'
         }`}
       >
-        <SearchIcon className="absolute w-5 h-5 text-gray-300 dark:text-gray-400 top-2/4 -translate-y-2/4 left-4" />
+        <SearchIcon className="absolute w-6 h-6 text-gray-300 md:w-5 md:h-5 dark:text-gray-400 top-2/4 -translate-y-2/4 left-2 md:left-4" />
 
         <input
           className="w-full h-full px-12 bg-transparent border-none outline-none"
@@ -59,8 +60,14 @@ const SearchBar: FC<any> = ({ suffixTags, prefixTags, doseMatch }) => {
           autoCorrect="off"
           autoFocus
           spellCheck="false"
-          onBlur={() => setTouched(false)}
-          onFocus={() => setTouched(true)}
+          onBlur={() => {
+            setTouched(false)
+            setOverlay(false)
+          }}
+          onFocus={() => {
+            setTouched(true)
+            setOverlay(true)
+          }}
         />
 
         {query && (
@@ -84,7 +91,56 @@ const SearchBar: FC<any> = ({ suffixTags, prefixTags, doseMatch }) => {
           I'm Feeling Lucky
         </a>
       </div>
+
+      {overlay && (
+        <Overlay
+          query={query}
+          setQuery={setQuery}
+          setOverlay={setOverlay}
+          handleSearch={handleSearch}
+        />
+      )}
     </>
+  )
+}
+
+const Overlay = ({ query, setQuery, setOverlay, handleSearch }: any) => {
+  return (
+    <div className="fixed inset-0 z-50 block w-full h-full dark:bg-[#303134] bg-white px-2 py-1 md:hidden">
+      <form
+        onSubmit={(e) => handleSearch(e)}
+        className="relative border-b border-input-border"
+      >
+        <BackIcon
+          onClick={() => setOverlay(false)}
+          className="absolute w-6 h-6 dark:text-blue-300 text-[#1A73E8] md:w-5 md:h-5 top-2/4 -translate-y-2/4 left-2 md:left-4"
+        />
+
+        <input
+          className="w-full px-12 bg-transparent border-none outline-none h-11"
+          name="q"
+          type="text"
+          title="Search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          maxLength={2048}
+          aria-label="Search"
+          aria-autocomplete="both"
+          aria-haspopup="false"
+          autoCapitalize="none"
+          autoComplete="off"
+          autoCorrect="off"
+          spellCheck="false"
+        />
+
+        {query && (
+          <CrossIcon
+            onClick={() => setQuery('')}
+            className="absolute w-6 h-6 text-gray-600 cursor-pointer dark:text-gray-400 top-2/4 -translate-y-2/4 right-4"
+          />
+        )}
+      </form>
+    </div>
   )
 }
 

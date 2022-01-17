@@ -1,10 +1,9 @@
 import { Hero, SearchBar, Tags } from '@/components'
 import { Footer, Header } from '@/components/Layout'
 import { useLocalStorage } from '@/hooks'
-import { nanoid } from 'nanoid'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo } from 'react'
 
 const initialPrefixTags = [
   {
@@ -65,7 +64,7 @@ const Home: NextPage = () => {
 
       <Header />
 
-      <main className="flex flex-col items-center w-full h-full px-4 py-8 mt-12 md:mt-[10%] lg:mt-36 md:py-0">
+      <main className="flex flex-col items-center w-full h-full px-4 py-5 mt-10 md:mt-[15vh] md:py-0">
         <Hero />
 
         <SearchBar
