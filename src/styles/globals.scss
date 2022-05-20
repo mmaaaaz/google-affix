@@ -1,37 +1,41 @@
+// SASS Mixins import
+@import './mixins';
+
+// Tailwind import
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --primary: 255, 255, 255; // #ffffff
-  --primary-2: 248, 249, 250; // #F8F9FA;
-  --primary-3: 242, 242, 242; //#F2F2F2;
+  --primary: #{hexToRGBString(#ffffff)};
+  --primary-2: #{hexToRGBString(#f8f9fa)};
+  --primary-3: #{hexToRGBString(#f2f2f2)};
 
-  --secondary: 32, 33, 36; // #202124;
-  --secondary-2: 48, 49, 52; // #303134;
-  --secondary-3: 23, 23, 23; //#171717;
+  --secondary: #{hexToRGBString(#202124)};
+  --secondary-2: #{hexToRGBString(#303134)};
+  --secondary-3: #{hexToRGBString(#171717)};
 
-  --input-border: 223, 225, 229; // #dfe1e5
+  --input-border: #{hexToRGBString(#dfe1e5)};
 
   // Text base
-  --text-primary: #000000;
-  --text-secondary: #ffffff;
+  --text-primary: #{hexToRGBString(#000000)};
+  --text-secondary: #{hexToRGBString(#ffffff)};
 }
 
 .dark {
-  --primary: 32, 33, 36; // #202124;
-  --primary-2: 48, 49, 52; // #303134;
-  --primary-3: 23, 23, 23; //#171717;
+  --primary: #{hexToRGBString(#202124)};
+  --primary-2: #{hexToRGBString(#303134)};
+  --primary-3: #{hexToRGBString(#171717)};
 
-  --secondary: 255, 255, 255; // #ffffff
-  --secondary-2: 248, 249, 250; // #F8F9FA;
-  --secondary-3: 242, 242, 242; //#F2F2F2;
+  --secondary: #{hexToRGBString(#ffffff)};
+  --secondary-2: #{hexToRGBString(#f8f9fa)};
+  --secondary-3: #{hexToRGBString(#f2f2f2)};
 
-  --input-border: 95, 99, 104; // #5f6368
+  --input-border: #{hexToRGBString(#5f6368)};
 
   // Text base
-  --text-primary: #ffffff;
-  --text-secondary: #000000;
+  --text-primary: #{hexToRGBString(#ffffff)};
+  --text-secondary: #{hexToRGBString(#000000)};
 }
 
 @layer components {
@@ -64,21 +68,6 @@ body {
   scroll-behavior: smooth;
   min-height: 100%;
   overflow-x: hidden;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-input,
-button,
-textarea,
-select {
-  font: inherit;
 }
 
 img {

@@ -1,7 +1,20 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
+  swcMinify: true,
   reactStrictMode: true,
+
+  experimental: {
+    // newNextLinkBehavior: true,
+    scrollRestoration: true,
+  },
+
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+
+  poweredByHeader: false,
+
   images: {
-    minimumCacheTTL: 10368000 // <- seconds translates to 172800 minutes or 2880 hours or 120 days
-  }
+    minimumCacheTTL: 84600 * 30, // 20days
+  },
 }

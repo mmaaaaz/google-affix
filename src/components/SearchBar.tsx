@@ -79,7 +79,10 @@ const SearchBar: FC<any> = ({ suffixTags, prefixTags, defaultQuery }) => {
       </form>
 
       <div className="flex mt-6 md:mt-7 flex-wrap items-center justify-center max-w-[360px] mx-auto gap-2 md:gap-3">
-        <button onClick={(e) => handleSearch(e)} className="triggers">
+        <button
+          onClick={(e) => handleSearch(e)}
+          className="triggers"
+        >
           Google Search
         </button>
 

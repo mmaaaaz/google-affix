@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                     document.documentElement.classList.remove('dark')
                   }
                 } catch (_) {}
-              `
+              `,
           }}
         />
       </ThemeProvider>

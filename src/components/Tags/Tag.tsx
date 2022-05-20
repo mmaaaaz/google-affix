@@ -26,8 +26,8 @@ const Tag = ({ title, tags = [], setTags }: ITag) => {
       ...tags,
       {
         tag,
-        id: nanoid(5)
-      }
+        id: nanoid(5),
+      },
     ])
 
     setTag('')
@@ -39,15 +39,17 @@ const Tag = ({ title, tags = [], setTags }: ITag) => {
         <p className="select-none">{title}</p>
         {tags.length > 0 && (
           <div className="absolute right-2 top-2/4 -translate-y-2/4">
-            <Delete title="Delete All Tags" onClick={() => setTags([])} />
+            <Delete
+              title="Delete All Tags"
+              onClick={() => setTags([])}
+            />
           </div>
         )}
       </div>
 
       {tags.length > 0 ? (
-        <ul className="flex flex-wrap h-full gap-1 px-4 mt-6">
-          {tags.map((val: any) => {
-            const { tag, id } = val
+        <ul className="flex flex-wrap h-full min-h-[5rem] items-center flex-1 gap-1 px-4 py-4">
+          {tags.map(({ tag, id }: any) => {
             return (
               <li
                 key={id}
@@ -63,14 +65,14 @@ const Tag = ({ title, tags = [], setTags }: ITag) => {
           })}
         </ul>
       ) : (
-        <div className="h-full select-none min-h-[3rem] flex items-center justify-center w-full px-4">
+        <div className="h-full min-h-[5rem] py-4 select-none flex-1 flex items-center justify-center w-full px-4">
           <p className="text-sm text-center text-gray-400">
             Add some {title} <br /> by clicking on the input below
           </p>
         </div>
       )}
 
-      <div className="w-full mt-6">
+      <div className="w-full">
         <form
           className="flex items-stretch justify-between overflow-hidden border-input-border border-y"
           onSubmit={(e) => handleNewTag(e)}
@@ -82,7 +84,11 @@ const Tag = ({ title, tags = [], setTags }: ITag) => {
             onChange={(e) => setTag(e.target.value)}
           />
 
-          <button type="submit" className="p-2" disabled={!tag}>
+          <button
+            type="submit"
+            className="p-2"
+            disabled={!tag}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -105,12 +111,12 @@ const Tag = ({ title, tags = [], setTags }: ITag) => {
 
 export default Tag
 
-const Delete = ({ onClick, ...adds }: any) => {
+const Delete = ({ onClick, ...props }: any) => {
   return (
     <button
       className="flex items-center justify-center w-6 h-6 text-white bg-green-600 rounded-full group-hover:bg-green-400 hover:bg-green-400"
       onClick={onClick}
-      {...adds}
+      {...props}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

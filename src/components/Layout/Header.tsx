@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { ReactNode } from 'react'
 import { ThemeSwitcher } from '..'
 import { BuyMeACoffe, GithubIcon } from '../Icons'
 
@@ -34,9 +34,10 @@ export default Header
 
 interface IHeaderLinks {
   link: string
+  children: ReactNode
 }
 
-const HeaderLink: FC<IHeaderLinks> = ({ children, link }) => {
+const HeaderLink = ({ children, link }: IHeaderLinks) => {
   return (
     <a
       href={link}

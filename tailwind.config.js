@@ -22,13 +22,13 @@ module.exports = {
         secondary: withOpacityValue('--secondary'),
         'secondary-2': withOpacityValue('--secondary-2'),
         'secondary-3': withOpacityValue('--secondary-3'),
-        'input-border': withOpacityValue('--input-border')
+        'input-border': withOpacityValue('--input-border'),
       },
       textColor: {
-        primary: 'var(--text-primary)',
-        secondary: 'var(--text-secondary)'
-      }
-    }
+        primary: withOpacityValue('--text-primary'),
+        secondary: withOpacityValue('--text-secondary'),
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 }

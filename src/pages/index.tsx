@@ -8,19 +8,19 @@ import { useEffect, useState } from 'react'
 const initialPrefixTags = [
   {
     tag: 'Highest',
-    id: 'initial-1'
-  }
+    id: 'initial-1',
+  },
 ]
 
 const initialSuffixTags = [
   {
     tag: 'videos on',
-    id: 'initial-2'
+    id: 'initial-2',
   },
   {
     tag: 'youtube',
-    id: 'initial-3'
-  }
+    id: 'initial-3',
+  },
 ]
 
 const Home: NextPage = () => {
@@ -52,12 +52,15 @@ const Home: NextPage = () => {
           name="description"
           content="Search Google with persistent prefix and suffix tags inspired by tagglesearch.app"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="icon"
+          href="/favicon.ico"
+        />
       </Head>
 
       <Header />
 
-      <main className="flex flex-col items-center w-full h-full px-4 py-5 mt-10 md:mt-[15vh] md:py-0">
+      <main className="flex flex-col items-center flex-1 w-full h-full px-4 py-5 mt-10 md:mt-[15vh] md:py-0">
         <Hero />
 
         <SearchBar
