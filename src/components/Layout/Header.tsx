@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { ThemeSwitcher } from '..'
 import { BuyMeACoffe, GithubIcon } from '../Icons'
 
-const Header = () => {
+export const Header = () => {
   return (
     <header className="flex items-center justify-end w-full p-2 text-sm divide-x md:p-4 divide-secondary-3">
       <div className="pr-6">
@@ -18,7 +18,7 @@ const Header = () => {
           <BuyMeACoffe className="w-full h-full" />
         </HeaderLink>
 
-        <HeaderLink link="https://github.com/mmaaaaz/google-affix">
+        <HeaderLink link="https://github.com/mmaaaaz">
           <img
             src="https://avatars.githubusercontent.com/u/80816622?v=4"
             alt="Devmaaaz Github link"
@@ -29,8 +29,6 @@ const Header = () => {
     </header>
   )
 }
-
-export default Header
 
 interface IHeaderLinks {
   link: string

@@ -1,6 +1,6 @@
 import { HeartIcon } from '../Icons'
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="flex flex-col w-full text-xs text-gray-500 sm:text-sm bg-primary-3 dark:text-gray-300">
       <div className="flex items-center justify-center px-5 md:px-8 py-3 border-b border-input-border/[0.15]">
@@ -35,5 +35,3 @@ const Footer = () => {
     </footer>
   )
 }
-
-export default Footer

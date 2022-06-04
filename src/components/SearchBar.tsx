@@ -1,7 +1,11 @@
-import { FC, useEffect, useState } from 'react'
 import { BackIcon, CrossIcon, SearchIcon } from '@/components/Icons'
+import { FC, useEffect, useState } from 'react'
 
-const SearchBar: FC<any> = ({ suffixTags, prefixTags, defaultQuery }) => {
+export const SearchBar: FC<any> = ({
+  suffixTags,
+  prefixTags,
+  defaultQuery,
+}) => {
   const [touched, setTouched] = useState(false)
   const [overlay, setOverlay] = useState(false)
   const [query, setQuery] = useState('')
@@ -36,7 +40,7 @@ const SearchBar: FC<any> = ({ suffixTags, prefixTags, defaultQuery }) => {
     <>
       <form
         onSubmit={(e) => handleSearch(e)}
-        className={`lg:max-w-[584px] max-w-[430px] mt-5 md:mt-7 w-full dark:hover:bg-primary-2 dark:md:bg-transparent dark:bg-primary-2 md:bg-transparent dark:focus:bg-primary-2 dark:hover:border-transparent border bg-transparent border-input-border hover:shadow-md rounded-full overflow-hidden h-10 md:h-11 my-0 mx-auto relative ${
+        className={`lg:max-w-[584px] min-h-[45px] max-w-[430px] mt-5 md:mt-7 w-full dark:hover:bg-primary-2 dark:md:bg-transparent dark:bg-primary-2 md:bg-transparent dark:focus:bg-primary-2 dark:hover:border-transparent border bg-transparent border-input-border hover:shadow-md rounded-full overflow-hidden h-10 md:h-11 my-0 mx-auto relative ${
           touched
             ? 'dark:bg-primary-2 dark:border-transparent shadow-lg hover:shadow-lg'
             : 'border-input-border'
@@ -146,5 +150,3 @@ const Overlay = ({ query, setQuery, setOverlay, handleSearch }: any) => {
     </div>
   )
 }
-
-export default SearchBar

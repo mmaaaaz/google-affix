@@ -1,7 +1,7 @@
 import Document, {
   DocumentContext,
-  Html,
   Head,
+  Html,
   Main,
   NextScript,
 } from 'next/document'
@@ -22,6 +22,7 @@ class MyDocument extends Document {
             as="image"
             href="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
           />
+
           <link
             rel="preload"
             as="image"

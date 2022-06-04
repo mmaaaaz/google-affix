@@ -4,8 +4,11 @@ module.exports = {
   reactStrictMode: true,
 
   experimental: {
-    // newNextLinkBehavior: true,
+    newNextLinkBehavior: true,
     scrollRestoration: true,
+
+    legacyBrowsers: false,
+    browsersListForSwc: true,
   },
 
   compiler: {
@@ -15,6 +18,6 @@ module.exports = {
   poweredByHeader: false,
 
   images: {
-    minimumCacheTTL: 84600 * 30, // 20days
+    minimumCacheTTL: 84600 * 90, // 90days
   },
 }

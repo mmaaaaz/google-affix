@@ -11,6 +11,8 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,

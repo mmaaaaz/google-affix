@@ -1,6 +1,6 @@
-import Tag from './Tag'
+import { Tag } from './Tag'
 
-const Tags = ({
+export const Tags = ({
   prefixTags,
   setPrefixTags,
   suffixTags,
@@ -22,5 +22,3 @@ const Tags = ({
     </div>
   )
 }
-
-export default Tags

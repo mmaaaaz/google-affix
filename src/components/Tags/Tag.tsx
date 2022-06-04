@@ -1,6 +1,5 @@
 import { nanoid } from 'nanoid'
 import { useState } from 'react'
-
 interface Tags {
   id: string
   tag: string
@@ -12,7 +11,7 @@ interface ITag {
   setTags: any
 }
 
-const Tag = ({ title, tags = [], setTags }: ITag) => {
+export const Tag = ({ title, tags = [], setTags }: ITag) => {
   const [tag, setTag] = useState<string>('')
 
   const removeTag = (id: string) => {
@@ -108,8 +107,6 @@ const Tag = ({ title, tags = [], setTags }: ITag) => {
     </div>
   )
 }
-
-export default Tag
 
 const Delete = ({ onClick, ...props }: any) => {
   return (
